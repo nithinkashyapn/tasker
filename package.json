@@ -1,10 +1,10 @@
 {
     "name": "tasker",
     "version": "1.0.0",
-    "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
     },
     "keywords": [],
     "author": "",
@@ -12,7 +12,8 @@
     "dependencies": {
         "address": "^1.1.2",
         "cli-table": "^0.3.11",
-        "commander": "^2.15.1",
+        "commander": "^8.3.0",
+        "conf": "^10.1.1",
         "cors": "^2.8.5",
         "cron": "^1.8.2",
         "dotenv": "^16.0.0",
@@ -27,6 +28,16 @@
         "slack-notify": "^2.0.2"
     },
     "bin": {
-        "tasker": "index.js"
-    }
+        "tasker": "./index.js"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nithinkashyapn/tasker.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nithinkashyapn/tasker/issues"
+    },
+    "homepage": "https://github.com/nithinkashyapn/tasker#readme",
+    "description": ""
 }

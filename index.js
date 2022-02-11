@@ -5,7 +5,7 @@ const program = new Command();
 const help = require('./commands/help');
 
 program
-    .name('tasker')
+    .command('tasker')
     .description('Your self-hosted task monitoring service')
     .version('1.0');
 
