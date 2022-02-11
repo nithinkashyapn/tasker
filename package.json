@@ -1,12 +1,32 @@
 {
-  "name": "tasker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "tasker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "address": "^1.1.2",
+        "cli-table": "^0.3.11",
+        "commander": "^2.15.1",
+        "cors": "^2.8.5",
+        "cron": "^1.8.2",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.2",
+        "fastq": "^1.13.0",
+        "getmac": "^5.20.0",
+        "helmet": "^5.0.2",
+        "lowdb": "^3.0.0",
+        "morgan": "^1.10.0",
+        "pm2": "^5.1.2",
+        "redis": "^4.0.3",
+        "slack-notify": "^2.0.2"
+    },
+    "bin": {
+        "tasker": "index.js"
+    }
 }
