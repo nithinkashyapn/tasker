@@ -15,9 +15,8 @@ function start() {
             function (err, apps) {
                 if (err) {
                     console.error(err);
-                    return pm2.disconnect();
                 }
-                pm2.disconnect();
+                return pm2.disconnect();
             }
         );
     });

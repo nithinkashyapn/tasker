@@ -10,7 +10,6 @@ function start() {
         pm2.stop('Tasker', function (err, apps) {
             if (err) {
                 console.error(err);
-                return pm2.disconnect();
             }
             return pm2.disconnect();
         });
