@@ -1,5 +1,6 @@
 // Require environmental variables
 const env = require('./environment');
+const database = require('./helpers/database.js');
 
 // Required modules
 const express = require('express');
@@ -7,8 +8,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-// Initialize server
+// Initialize server and prepare database
 const app = express();
+database.init();
 
 // Basic express config
 app.use(morgan('tiny'));

@@ -1,6 +1,6 @@
 const pm2 = require('pm2');
 
-function start() {
+function stop() {
     pm2.connect(function (err) {
         if (err) {
             console.error(err);
@@ -16,4 +16,4 @@ function start() {
     });
 }
 
-module.exports = start;
+module.exports = stop;
