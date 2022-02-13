@@ -7,7 +7,11 @@ function create(name) {
         database.createTask(name);
         const data = database.getTask(name);
         let table = new clitable();
-        table.push({ Name: data['name'] }, { Key: data['key'] });
+        table.push(
+            { Name: data['name'] },
+            { 'Task Id': data['taskId'] },
+            { Key: data['key'] }
+        );
         console.log(
             chalk.green.bold(`Task ${name} has been created successfully!`)
         );

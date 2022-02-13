@@ -11,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "address": "^1.1.2",
+        "better-sqlite3": "^7.5.0",
         "cli-table": "^0.3.11",
         "commander": "^8.3.0",
         "conf": "^10.1.1",
@@ -22,9 +23,11 @@
         "getmac": "^5.20.0",
         "helmet": "^5.0.2",
         "keyv": "^4.1.1",
+        "lodash": "^4.17.21",
         "lowdb": "^1.0.0",
         "morgan": "^1.10.0",
         "nanoid": "^3.2.0",
+        "node-cron": "^3.0.0",
         "pm2": "^5.1.2",
         "redis": "^4.0.3",
         "slack-notify": "^2.0.2"

@@ -15,12 +15,16 @@ databaseHelper.init = async () => {
 databaseHelper.createTask = (name) => {
     return db
         .get('tasks')
-        .push({ name, key: nanoid.nanoid(30) })
+        .push({ name, key: nanoid.nanoid(30), taskId: nanoid.nanoid(30) })
         .write();
 };
 
 databaseHelper.getTask = (name) => {
     return db.get('tasks').find({ name }).value();
+};
+
+databaseHelper.getTaskById = (taskId) => {
+    return db.get('tasks').find({ taskId }).value();
 };
 
 // Export functions
