@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../database/prisma.db"
+}
+
+model task {
+  id        Int    @id @default(autoincrement())
+  taskId    String @unique
+  threshold Int
+  duration  Int
+
+  @@index([taskId])
+}
+
+model count {
+  id     Int    @id @default(autoincrement())
+  taskId String
+  count  Int    @default(0)
+  date   Int
+  minute Int
+  hour   Int
+  month  Int
+  year   Int
+  hash   String
+
+  @@unique([hash])
+  @@index([taskId, date, month, minute, hour, year])
+}

@@ -10,6 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@prisma/client": "^3.9.2",
         "address": "^1.1.2",
         "better-sqlite3": "^7.5.0",
         "cli-table": "^0.3.11",
@@ -25,6 +26,7 @@
         "keyv": "^4.1.1",
         "lodash": "^4.17.21",
         "lowdb": "^1.0.0",
+        "md5": "^2.3.0",
         "morgan": "^1.10.0",
         "nanoid": "^3.2.0",
         "node-cron": "^3.0.0",
@@ -35,7 +37,9 @@
     "bin": {
         "tasker": "./index.js"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "prisma": "^3.9.2"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/nithinkashyapn/tasker.git"
