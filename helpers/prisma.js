@@ -15,6 +15,16 @@ prismaHelper.createTask = async (taskId, threshold, duration) => {
     });
 };
 
+prismaHelper.getAllTaskIds = async () => {
+    let data = await prisma.task.findMany({
+        select: {
+            taskId: true,
+            threshold: true
+        }
+    });
+    return data;
+};
+
 prismaHelper.readTask = async (name) => {
     console.log('TODO');
 };
@@ -27,7 +37,7 @@ prismaHelper.incrementCount = async (taskId, timestamp) => {
     let minute = datetime.getUTCMinutes();
     let hour = datetime.getUTCHours();
 
-    let hash = timeHelper.hashTimeString(timestamp);
+    let hash = timeHelper.hashTimeString(timestamp, taskId);
 
     return await prisma.count.upsert({
         where: {

@@ -22,7 +22,7 @@ model task {
 model count {
   id     Int    @id @default(autoincrement())
   taskId String
-  count  Int    @default(0)
+  count  Int    @default(1)
   date   Int
   minute Int
   hour   Int

@@ -12,7 +12,7 @@ timeHelper.getTimeString = (timestamp) => {
     );
 };
 
-timeHelper.hashTimeString = (timestamp) => {
+timeHelper.hashTimeString = (timestamp, taskId = '') => {
     let datetime = new Date(timestamp);
     let date = datetime.getUTCDate();
     let hour = datetime.getUTCHours();
@@ -20,7 +20,7 @@ timeHelper.hashTimeString = (timestamp) => {
     let year = datetime.getUTCFullYear();
     let month = datetime.getUTCMonth();
 
-    return md5(`${year}_${month}_${date}_${hour}_${minute}`);
+    return md5(`${taskId}_${year}_${month}_${date}_${hour}_${minute}`);
 };
 
 // Export functions
