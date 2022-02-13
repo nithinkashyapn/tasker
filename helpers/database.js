@@ -15,12 +15,24 @@ databaseHelper.init = async () => {
 databaseHelper.createTask = (name) => {
     return db
         .get('tasks')
-        .push({ name, key: nanoid.nanoid(30), taskId: nanoid.nanoid(30) })
+        .push({
+            name,
+            key: nanoid.nanoid(30),
+            taskId: nanoid.nanoid(30),
+            threshold: 100,
+            duration: 60,
+            slackChannel: 'TODO',
+            active: true
+        })
         .write();
 };
 
 databaseHelper.getTask = (name) => {
     return db.get('tasks').find({ name }).value();
+};
+
+databaseHelper.getAllTasks = () => {
+    return db.get('tasks').filter({ active: true }).value();
 };
 
 databaseHelper.getTaskById = (taskId) => {

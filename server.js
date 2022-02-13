@@ -2,7 +2,6 @@
 const env = require('./environment');
 const database = require('./helpers/database.js');
 const cronJobs = require('./schedules/cron');
-const prismaHelper = require('./helpers/prisma.js');
 
 // Required modules
 const express = require('express');
@@ -14,7 +13,6 @@ const morgan = require('morgan');
 const app = express();
 database.init();
 cronJobs.iterateAndCheck();
-// prismaHelper.getAllTaskIds();
 
 // Basic express config
 app.use(morgan('tiny'));

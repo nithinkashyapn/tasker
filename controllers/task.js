@@ -2,7 +2,6 @@
 const ingestDataQueue = require('fastq').promise(processIngest, 1);
 const databaseHelper = require('../helpers/database');
 const keysHelper = require('../helpers/keys');
-const prismaHelper = require('../helpers/prisma');
 const _ = require('lodash');
 
 // Worker Function
@@ -23,7 +22,7 @@ async function processIngest(data) {
     }
 
     if (typeof storedTaskKey != 'undefined') {
-        await prismaHelper.incrementCount(taskId, _.get(data, 'timestamp'));
+        await keysHelper.increment(taskId, _.get(data, 'timestamp'));
     } else {
         // TODO - Add logging logic
     }

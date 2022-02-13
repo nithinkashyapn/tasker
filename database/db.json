@@ -2,8 +2,21 @@
   "tasks": [
     {
       "name": "mimir",
-      "key": "P82S6Qrj67c2mqgy3-KwRF_yI_gD7I",
-      "taskId": "HVSWxzaNtgopMp3IqzKyTetiGk5zXS"
+      "key": "Sul3StSRl3paSrgI3pqN7-_shbiyqQ",
+      "taskId": "7mY5AaR1dXXvxGfBxN7Jo96gJsP9LJ",
+      "threshold": 100,
+      "duration": 60,
+      "slackChannel": "TODO",
+      "active": true
+    },
+    {
+      "name": "mimir2",
+      "key": "LbYKQehc5vEO7aCcTMWljYiLA26T5r",
+      "taskId": "YMiXvUSzYuUkmF2yQ5lcBbz184GH45",
+      "threshold": 100,
+      "duration": 60,
+      "slackChannel": "TODO",
+      "active": true
     }
   ]
 }

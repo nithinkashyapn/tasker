@@ -4,17 +4,18 @@ const keyv = new Keyv();
 // Export object
 var keysHelper = {};
 
-keysHelper.set = async (name, value) => {
-    return await keyv.set(name, value, 60 * 1000);
+keysHelper.set = async (name, value, ttl = true) => {
+    return await keyv.set(name, value, ttl ? 60 * 1000 : 'never expires');
 };
 
 keysHelper.get = async (name) => {
     return await keyv.get(name);
 };
 
-keysHelper.increment = async (name) => {
-    let currentValue = (await keyv.get(name)) || 0;
-    return await keyv.set(name, ++currentValue);
+keysHelper.increment = async (taskId, timestamp) => {
+    let hash = timeHelper.hashTimeString(timestamp, taskId);
+    let currentValue = (await keyv.get(hash)) || 0;
+    return await keyv.set(hash, ++currentValue, false);
 };
 
 // Export functions

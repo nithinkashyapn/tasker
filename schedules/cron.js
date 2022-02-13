@@ -1,7 +1,5 @@
 var cron = require('node-cron');
-const Prisma = require('@prisma/client');
-const prisma = new Prisma.PrismaClient();
-const prismaHelper = require('../helpers/prisma');
+const databaseHelper = require('../helpers/database');
 const timeHelper = require('../helpers/time');
 const slackHelper = require('../helpers/slack');
 
@@ -9,28 +7,26 @@ const slackHelper = require('../helpers/slack');
 var schedules = {};
 
 schedules.iterateAndCheck = async () => {
-    // cron.schedule('* * * * *', () => {
-    let timestamp = Date.now();
-    let tasks = await prismaHelper.getAllTaskIds();
-    console.log(tasks);
-    tasks.forEach(async (task) => {
-        let tempStore = await prisma.count.findUnique({
-            where: {
-                hash: timeHelper.hashTimeString(timestamp, task['taskId'])
+    cron.schedule('* * * * *', () => {
+        let timestamp = Date.now() - 60000;
+        let tasks = databaseHelper.getAllTasks();
+        console.log(tasks);
+        tasks.forEach(async (task) => {
+            let tempStore = databaseHelper.getTask(
+                timeHelper.hashTimeString(timestamp, task['taskId'])
+            );
+            if (typeof tempStore != 'undefined') {
+                console.log('tempStore YES', tempStore);
+            } else {
+                console.log('tempStore', tempStore);
+                slackHelper.sendMessage(
+                    `No events were registered for ${
+                        task['name']
+                    } at ${new Date(timestamp)}`
+                );
             }
         });
-        if (tempStore) {
-            console.log('tempStore YES', tempStore);
-        } else {
-            console.log('tempStore', tempStore);
-            slackHelper.sendMessage(
-                `No events were triggered for ${
-                    task['taskId']
-                } during ${timestamp.toLocaleString()}`
-            );
-        }
     });
-    // });
 };
 
 // Export functions
