@@ -11,17 +11,19 @@ schedules.iterateAndCheck = async () => {
         let timestamp = Date.now() - 60000;
         let tasks = databaseHelper.getAllTasks();
         tasks.forEach(async (task) => {
-            let tempStore = databaseHelper.getTask(
-                timeHelper.hashTimeString(timestamp, task['taskId'])
-            );
+            let timehash = timeHelper.hashTimeString(timestamp, task['taskId']);
+            let tempStore = databaseHelper.getTask(timehash);
             if (typeof tempStore != 'undefined') {
-                if(tempStore['threshold'] < task['threshold']) {
+                if (tempStore['threshold'] < task['threshold']) {
                     slackHelper.sendMessage(
-                    `Less events were registered for ${
-                        task['name']
-                    } at ${new Date(timestamp)}. Expected ${task['threshold']} but received ${tempStore['threshold']}`
-                );
+                        `Less events were registered for ${
+                            task['name']
+                        } at ${new Date(timestamp)}. Expected ${
+                            task['threshold']
+                        } but received ${tempStore['threshold']}`
+                    );
                 }
+                await keysHelper.delete(timehash);
             } else {
                 slackHelper.sendMessage(
                     `No events were registered for ${

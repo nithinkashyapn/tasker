@@ -12,6 +12,10 @@ keysHelper.get = async (name) => {
     return await keyv.get(name);
 };
 
+keysHelper.delete = async (name) => {
+    return await keyv.delete(name);
+};
+
 keysHelper.increment = async (taskId, timestamp) => {
     let hash = timeHelper.hashTimeString(timestamp, taskId);
     let currentValue = (await keyv.get(hash)) || 0;
